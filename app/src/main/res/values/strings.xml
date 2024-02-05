@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Champions formula</string>
+    <string name="main_list">best players</string>
+    <string name="exit">exit</string>
+</resources>
