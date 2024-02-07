@@ -1,11 +1,18 @@
 package com.champions.formula.leaders.race.app.ui.demonstration
 
+import android.content.res.Resources
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.champions.formula.leaders.race.app.R
 import com.champions.formula.leaders.race.app.data.DriverInfo
 import com.champions.formula.leaders.race.app.ui.base.BaseViewModel
 import com.champions.formula.leaders.race.app.ui.base.Event
 import com.champions.formula.leaders.race.app.ui.localstorage.PreferenceHelper
 
-class ViewDriversViewModel(val preferenceHelper: PreferenceHelper) : BaseViewModel<Event>(){
+class ViewDriversViewModel(val preferenceHelper: PreferenceHelper, val resources: Resources) : BaseViewModel<Event>(){
+
+    private val _drivers = MutableLiveData<List<DriverInfo>>()
+    val drivers: LiveData<List<DriverInfo>> = _drivers
 
     init {
         addStaticDriverData()
@@ -14,6 +21,7 @@ class ViewDriversViewModel(val preferenceHelper: PreferenceHelper) : BaseViewMod
     private fun addStaticDriverData() {
         val driverInfoList = listOf(
             DriverInfo(
+                image = R.mipmap.max_verstappen,
                 lastCurrentTeam = "Red Bull Racing",
                 country = "Netherlands",
                 podiums = "98",
@@ -21,23 +29,23 @@ class ViewDriversViewModel(val preferenceHelper: PreferenceHelper) : BaseViewMod
                 worldChampionships = "3",
                 racesWon = "54",
                 dateOfBirth = "30/09/1997",
-                placeOfBirth = "Hasselt, Belgium"
+                placeOfBirth = "Hasselt, Belgium",
+                name = "Max Verstappen"
             ),
             DriverInfo(
-                lastCurrentTeam = "Ferrari",
-                country = "Germany",
-                podiums = "155",
-                grandsPrixEntered = "308",
-                worldChampionships = "7",
-                racesWon = "91",
-                dateOfBirth = "03/01/1969",
-                placeOfBirth = "Hürth-Hermülheim, Germany"
+                image = R.mipmap.graham_hill,
+                lastCurrentTeam = "Hill-Ford",
+                country = "United Kingdom",
+                podiums = "36",
+                grandsPrixEntered = "176",
+                worldChampionships = "2",
+                racesWon = "14",
+                dateOfBirth = "19/02/1929",
+                placeOfBirth = "London, United Kingdom",
+                name = "Graham Hill"
             )
         )
-        preferenceHelper.saveDriverInfoList(driverInfoList)
-    }
-
-    fun fetchDrivers(preferenceHelper: PreferenceHelper): List<DriverInfo>?{
-        return preferenceHelper.getDriverInfoList()
+        _drivers.value = driverInfoList
     }
 }
+

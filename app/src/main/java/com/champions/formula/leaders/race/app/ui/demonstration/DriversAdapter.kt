@@ -9,7 +9,7 @@ import com.champions.formula.leaders.race.app.R
 import com.champions.formula.leaders.race.app.data.DriverInfo
 import com.champions.formula.leaders.race.app.databinding.ItemDriverBinding
 
-class DriversAdapter(private val drivers: List<DriverInfo>) :
+class DriversAdapter(private var drivers: MutableList<DriverInfo>, private val listener: OnDriverClickListener) :
     RecyclerView.Adapter<DriversAdapter.DriverViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DriverViewHolder {
@@ -23,16 +23,34 @@ class DriversAdapter(private val drivers: List<DriverInfo>) :
 
     override fun getItemCount(): Int = drivers.size
 
-    class DriverViewHolder(private val binding: ItemDriverBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class DriverViewHolder(private val binding: ItemDriverBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(driver: DriverInfo) {
             binding.apply {
-                // Привязываем данные к элементам интерфейса
+                tvTitleView.text = "${driver.name}"
+                driverImageView.setImageResource(driver.image)
                 teamTextView.text = "Team: ${driver.lastCurrentTeam}"
                 countryTextView.text = "Country: ${driver.country}"
                 podiumsTextView.text = "Podiums: ${driver.podiums}"
-
-                // Добавьте другие элементы и изображения по вашему усмотрению
+                grandsTextView.text = "Grands prix entered: ${driver.grandsPrixEntered}"
+                championshipTextView.text = "World Championships: ${driver.worldChampionships}"
+                racesWonTextView.text = "Races Won: ${driver.racesWon}"
+                dateOfBirthTextView.text = "Races Won: ${driver.dateOfBirth}"
+                placeOfBirthTextView.text = "Races Won: ${driver.placeOfBirth}"
+            }
+            binding.nextItem.setOnClickListener {
+                listener.onDriverClick(driver, getAbsoluteAdapterPosition())
             }
         }
     }
+
+    fun updateDrivers(newDrivers: List<DriverInfo>) {
+        drivers.clear()
+        drivers.addAll(newDrivers)
+        notifyDataSetChanged()
+    }
+
+}
+
+interface OnDriverClickListener {
+    fun onDriverClick(driver: DriverInfo, position: Int)
 }
