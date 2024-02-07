@@ -13,7 +13,7 @@ class SplashActivity: AppCompatActivity(){
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.imageView.postDelayed({ MainActivity.start(this) }, 3000)
+        binding.imageView.postDelayed({ MainActivity.start(this) }, 1000)
     }
 }
 

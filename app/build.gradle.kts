@@ -76,13 +76,14 @@ dependencies {
 
     //koin
     implementation("io.insert-koin:koin-core:${Versions.koin_version}")
-    implementation("io.insert-koin:koin-android:${Versions.koin_android_version}")
+    implementation("io.insert-koin:koin-android:${Versions.koin_version}")
     //recyclerView
     implementation("androidx.recyclerview:recyclerview:${Versions.recycler_view}")
 
 }
 object Versions {
-    const val koin_version = "3.5.0"
-    const val koin_android_version = "3.5.0"
+    const val koin_version = "3.5.3"
+    const val koin_android_version = "3.5.3"
     const val recycler_view = "1.3.1"
+    const val koin_vm = "3.5.3"
 }

@@ -1,8 +1,11 @@
 package com.champions.formula.leaders.race.app.data
 
 import android.content.Context
+import android.content.res.Resources
 
 data class DriverInfo(
+    val name: String,
+    val image: Int,
     val lastCurrentTeam: String,
     val country: String,
     val podiums: String,
@@ -14,12 +17,9 @@ data class DriverInfo(
 )
 
 class PreferenceHelper(context: Context) {
-
-    private val sharedPreferences =
-        context.getSharedPreferences("DriverPreferences", Context.MODE_PRIVATE)
+    private val sharedPreferences = context.getSharedPreferences("DriverPreferences", Context.MODE_PRIVATE)
 
     fun saveDriverInfoList(driverInfoList: List<DriverInfo>) {
-        // Преобразование списка в одну строку
         val driverInfoString = driverInfoList.joinToString("\n\n") { driverInfo ->
             """
             Last/Current Team: ${driverInfo.lastCurrentTeam}
@@ -30,10 +30,10 @@ class PreferenceHelper(context: Context) {
             Races won: ${driverInfo.racesWon}
             Date of birth: ${driverInfo.dateOfBirth}
             Place of birth: ${driverInfo.placeOfBirth}
+            Image: ${driverInfo.image}
+            Name: ${driverInfo.name}
             """.trimIndent()
         }
-
-        // Сохранение строки в SharedPreferences
         sharedPreferences.edit().putString("driverInfoList", driverInfoString).apply()
     }
 
@@ -42,48 +42,23 @@ class PreferenceHelper(context: Context) {
         return if (driverInfoString.isEmpty()) {
             emptyList()
         } else {
-            // Разделение строки на подстроки
             driverInfoString.split("\n\n").map { parseDriverInfoString(it) }
         }
     }
 
     private fun parseDriverInfoString(driverInfoString: String): DriverInfo {
-        // Разделение подстроки на компоненты
-        val infoArray = driverInfoString.lines()
+        val infoMap = driverInfoString.lines().associateBy({ it.substringBefore(":").trim() }, { it.substringAfter(":").trim() })
         return DriverInfo(
-            lastCurrentTeam = infoArray[0].substringAfter(":").trim(),
-            country = infoArray[1].substringAfter(":").trim(),
-            podiums = infoArray[2].substringAfter(":").trim(),
-            grandsPrixEntered = infoArray[3].substringAfter(":").trim(),
-            worldChampionships = infoArray[4].substringAfter(":").trim(),
-            racesWon = infoArray[5].substringAfter(":").trim(),
-            dateOfBirth = infoArray[6].substringAfter(":").trim(),
-            placeOfBirth = infoArray[7].substringAfter(":").trim()
+            lastCurrentTeam = infoMap["Last/Current Team"] ?: "",
+            country = infoMap["Country"] ?: "",
+            podiums = infoMap["Podiums"] ?: "",
+            grandsPrixEntered = infoMap["Grands Prix entered"] ?: "",
+            worldChampionships = infoMap["World Championships"] ?: "",
+            racesWon = infoMap["Races won"] ?: "",
+            dateOfBirth = infoMap["Date of birth"] ?: "",
+            placeOfBirth = infoMap["Place of birth"] ?: "",
+            image = infoMap["Image"]?.toInt() ?: 0,
+            name = infoMap["Name"] ?: ""
         )
     }
 }
-
-// Использование
-val driverInfoList = listOf(
-    DriverInfo(
-        lastCurrentTeam = "Red Bull Racing",
-        country = "Netherlands",
-        podiums = "98",
-        grandsPrixEntered = "185",
-        worldChampionships = "3",
-        racesWon = "54",
-        dateOfBirth = "30/09/1997",
-        placeOfBirth = "Hasselt, Belgium"
-    ),
-    DriverInfo(
-        lastCurrentTeam = "Ferrari",
-        country = "Germany",
-        podiums = "155",
-        grandsPrixEntered = "308",
-        worldChampionships = "7",
-        racesWon = "91",
-        dateOfBirth = "03/01/1969",
-        placeOfBirth = "Hürth-Hermülheim, Germany"
-    )
-)
-

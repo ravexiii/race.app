@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:padding="16dp">
 
 
     <TextView
-        android:id="@+id/tv_name_view"
+        android:id="@+id/tv_title_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/notable"
-        android:gravity="center"
-        android:text="Max Verstappen"
         android:textColor="@color/dry_red"
         android:textSize="32sp"
         android:textStyle="bold"
@@ -22,29 +20,22 @@
         app:layout_constraintStart_toStartOf="@+id/driverImageView"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <ImageView
         android:id="@+id/driverImageView"
         android:layout_width="0dp"
         android:layout_height="300dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/notable"
+        android:layout_marginTop="12dp"
         android:scaleType="centerCrop"
-        android:src="@mipmap/max_verstappen"
-        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name_view" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_view" />
 
     <TextView
         android:id="@+id/nameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/notable"
-        android:text="Lewis Hamilton"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -56,34 +47,93 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/notable"
-        android:text="Mercedes"
         android:textColor="@color/white"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/countryTextView"
-        app:layout_constraintTop_toBottomOf="@+id/countryTextView" />
+        app:layout_constraintStart_toStartOf="@+id/nameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
 
     <TextView
         android:id="@+id/countryTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/notable"
-        android:text="United Kingdom"
         android:textColor="@color/white"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/podiumsTextView"
-        app:layout_constraintTop_toBottomOf="@+id/podiumsTextView" />
+        app:layout_constraintStart_toStartOf="@+id/teamTextView"
+        app:layout_constraintTop_toBottomOf="@+id/teamTextView" />
 
     <TextView
         android:id="@+id/podiumsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/notable"
-        android:text="Podiums: 100"
         android:textColor="@color/white"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/nameTextView"
-        app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
+        app:layout_constraintStart_toStartOf="@+id/countryTextView"
+        app:layout_constraintTop_toBottomOf="@+id/countryTextView" />
 
-    <!-- Добавьте другие текстовые элементы и изображения по вашему усмотрению -->
+    <TextView
+        android:id="@+id/grandsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notable"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/podiumsTextView"
+        app:layout_constraintTop_toBottomOf="@+id/podiumsTextView" />
 
+    <TextView
+        android:id="@+id/championshipTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notable"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/grandsTextView"
+        app:layout_constraintTop_toBottomOf="@+id/grandsTextView" />
+
+    <TextView
+        android:id="@+id/racesWonTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notable"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/championshipTextView"
+        app:layout_constraintTop_toBottomOf="@+id/championshipTextView" />
+
+    <TextView
+        android:id="@+id/dateOfBirthTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notable"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/racesWonTextView"
+        app:layout_constraintTop_toBottomOf="@+id/racesWonTextView" />
+
+    <TextView
+        android:id="@+id/placeOfBirthTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notable"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/dateOfBirthTextView"
+        app:layout_constraintTop_toBottomOf="@+id/dateOfBirthTextView" />
+
+    <Button
+        android:id="@+id/next_item"
+        android:background="@drawable/button_background"
+        android:layout_width="200dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_height="wrap_content"
+        android:text="@string/next"
+        android:fontFamily="@font/notable"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/placeOfBirthTextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

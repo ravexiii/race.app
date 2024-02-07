@@ -11,30 +11,29 @@ import com.champions.formula.leaders.race.app.databinding.ActivityViewDriversBin
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class ViewDriversActivity : AppCompatActivity() {
+class ViewDriversActivity : AppCompatActivity(), OnDriverClickListener {
 
-    private lateinit var vm: ViewDriversViewModel by viewModel<ViewDriversViewModel>()
-
-    private lateinit var binding: ActivityViewDriversBinding
+    val vm: ViewDriversViewModel by viewModel<ViewDriversViewModel>()
+    lateinit var binding: ActivityViewDriversBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityViewDriversBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val list = vm.preferenceHelper.getDriverInfoList() ?: emptyList()
-        //initRecyclerView(list)
-    }
 
-    private fun initRecyclerView(driverList: List<DriverInfo>) {
-        // Инициализация RecyclerView
-        val layoutManager = LinearLayoutManager(this)
-        binding.recyclerView.layoutManager = layoutManager
-
-        // Создание адаптера для RecyclerView
-        val adapter = DriversAdapter(driverList)
+        val adapter = DriversAdapter(mutableListOf(), this)
         binding.recyclerView.adapter = adapter
-    }
+        binding.recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
+        vm.drivers.observe(this, { drivers ->
+            adapter.updateDrivers(drivers)
+            adapter.notifyDataSetChanged()
+        })
+    }
+    override fun onDriverClick(driver: DriverInfo, position: Int) {
+        binding.recyclerView.smoothScrollToPosition((position + 1) %
+                (binding.recyclerView.adapter?.itemCount ?: 1))
+    }
 
     companion object {
         fun start(context: Context) {
