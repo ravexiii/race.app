@@ -1,7 +1,6 @@
-package com.champions.formula.leaders.race.app.data
+package com.champions.formula.leaders.race.app.domain
 
 import android.content.Context
-import android.content.res.Resources
 
 data class DriverInfo(
     val name: String,

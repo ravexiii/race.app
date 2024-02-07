@@ -2,11 +2,9 @@ package com.champions.formula.leaders.race.app.ui.demonstration
 
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.champions.formula.leaders.race.app.R
-import com.champions.formula.leaders.race.app.data.DriverInfo
+import com.champions.formula.leaders.race.app.domain.DriverInfo
 import com.champions.formula.leaders.race.app.databinding.ItemDriverBinding
 
 class DriversAdapter(private var drivers: MutableList<DriverInfo>, private val listener: OnDriverClickListener) :

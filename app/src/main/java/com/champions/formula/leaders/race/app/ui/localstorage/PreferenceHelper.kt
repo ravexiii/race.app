@@ -1,7 +1,7 @@
 package com.champions.formula.leaders.race.app.ui.localstorage
 
 import android.content.Context
-import com.champions.formula.leaders.race.app.data.DriverInfo
+import com.champions.formula.leaders.race.app.domain.DriverInfo
 
 class PreferenceHelper(context: Context) {
 

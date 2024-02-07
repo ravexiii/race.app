@@ -14,7 +14,6 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         startKoin {
-            androidLogger(Level.ERROR) // Включить логирование ошибок Koin
             androidContext(this@App)
             androidFileProperties()
             modules(vmModule, appModule)

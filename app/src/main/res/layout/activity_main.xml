@@ -33,6 +33,7 @@
         android:id="@+id/main_view_top_list"
         android:background="@drawable/button_background"
         android:layout_width="wrap_content"
+        android:minWidth="250dp"
         android:layout_height="wrap_content"
         android:text="@string/main_list"
         android:fontFamily="@font/notable"
@@ -44,14 +45,15 @@
 
     <Button
         android:id="@+id/exit"
-        android:background="@drawable/button_background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
         android:text="@string/exit"
+        android:fontFamily="@font/notable"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/main_view_top_list"
+        app:layout_constraintStart_toStartOf="@+id/main_view_top_list"
         app:layout_constraintTop_toTopOf="@+id/main_view_top_list" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

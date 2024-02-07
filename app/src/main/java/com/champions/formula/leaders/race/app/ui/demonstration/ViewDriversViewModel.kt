@@ -4,7 +4,7 @@ import android.content.res.Resources
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.champions.formula.leaders.race.app.R
-import com.champions.formula.leaders.race.app.data.DriverInfo
+import com.champions.formula.leaders.race.app.domain.DriverInfo
 import com.champions.formula.leaders.race.app.ui.base.BaseViewModel
 import com.champions.formula.leaders.race.app.ui.base.Event
 import com.champions.formula.leaders.race.app.ui.localstorage.PreferenceHelper
