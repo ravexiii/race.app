@@ -31,10 +31,9 @@ class ViewDriversActivity : BaseActivity<ViewDriversViewModel>(R.layout.activity
         binding.recyclerView.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
-        vm.drivers.observe(this, { drivers ->
+        vm.drivers.observe(this) { drivers ->
             adapter.updateDrivers(drivers)
-            adapter.notifyDataSetChanged()
-        })
+        }
     }
 
     override fun onDriverClick(driver: DriverInfo, position: Int) {

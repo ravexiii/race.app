@@ -4,12 +4,13 @@ import android.content.res.Resources
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.champions.formula.leaders.race.app.R
+import com.champions.formula.leaders.race.app.api.ApiService
 import com.champions.formula.leaders.race.app.domain.DriverInfo
 import com.champions.formula.leaders.race.app.ui.base.BaseViewModel
 import com.champions.formula.leaders.race.app.ui.base.Event
 import com.champions.formula.leaders.race.app.ui.localstorage.PreferenceHelper
 
-class ViewDriversViewModel(val preferenceHelper: PreferenceHelper, val resources: Resources) : BaseViewModel<Event>(){
+class ViewDriversViewModel(val preferenceHelper: PreferenceHelper, val resources: Resources, val apiService: ApiService) : BaseViewModel<Event>(){
 
     private val _drivers = MutableLiveData<List<DriverInfo>>()
     val drivers: LiveData<List<DriverInfo>> = _drivers

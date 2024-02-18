@@ -80,10 +80,13 @@ dependencies {
     //recyclerView
     implementation("androidx.recyclerview:recyclerview:${Versions.recycler_view}")
 
+    implementation("com.squareup.retrofit2:retrofit:${Versions.retrofit}")
+    implementation("com.squareup.retrofit2:converter-moshi:${Versions.retrofit}")
 }
 object Versions {
     const val koin_version = "3.5.3"
     const val koin_android_version = "3.5.3"
     const val recycler_view = "1.3.1"
     const val koin_vm = "3.5.3"
+    const val retrofit = "2.9.0"
 }
