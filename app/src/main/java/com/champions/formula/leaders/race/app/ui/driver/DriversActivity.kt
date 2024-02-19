@@ -65,31 +65,31 @@ class DriversActivity : AppCompatActivity() {
         apiService = retrofit.create(ApiService::class.java)
     }
 
-    fun getDriver(){
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                val drivers = apiService.getDriver()
-                runOnUiThread {
-                    // Проверяем, что список водителей не пустой, прежде чем отображать информацию
-                    if (drivers.isNotEmpty()) {
-                        val driver = drivers[0] // Берем первого водителя из списка
-
-//                        Picasso.get().load(driver.headshot_url).into(binding.avatar)
-//                        binding.driverNameTV.text = driver.first_name
-                    }
-                }
-            } catch (e: Exception) {
-                // В случае возникновения исключения, выводим сообщение об ошибке
-                runOnUiThread {
-                    Toast.makeText(
-                        this@DriversActivity,
-                        "Ошибочка: ${e.message}",
-                        Toast.LENGTH_SHORT)
-                        .show()
-                }
-            }
-        }
-    }
+//    fun getDriver(){
+//        CoroutineScope(Dispatchers.IO).launch {
+//            try {
+//                val drivers = apiService.getDriver()
+//                runOnUiThread {
+//                    // Проверяем, что список водителей не пустой, прежде чем отображать информацию
+//                    if (drivers.isNotEmpty()) {
+//                        val driver = drivers[0] // Берем первого водителя из списка
+//
+////                        Picasso.get().load(driver.headshot_url).into(binding.avatar)
+////                        binding.driverNameTV.text = driver.first_name
+//                    }
+//                }
+//            } catch (e: Exception) {
+//                // В случае возникновения исключения, выводим сообщение об ошибке
+//                runOnUiThread {
+//                    Toast.makeText(
+//                        this@DriversActivity,
+//                        "Ошибочка: ${e.message}",
+//                        Toast.LENGTH_SHORT)
+//                        .show()
+//                }
+//            }
+//        }
+//    }
 
     fun getAllDrivers(){
         CoroutineScope(Dispatchers.IO).launch {

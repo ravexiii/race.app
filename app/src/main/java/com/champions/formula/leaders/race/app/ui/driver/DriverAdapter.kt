@@ -48,7 +48,7 @@ class DriverAdapter : ListAdapter<DriverModel, DriverAdapter.DriverViewHolder>(C
 
     class Comparator : DiffUtil.ItemCallback<DriverModel>() {
         override fun areItemsTheSame(oldItem: DriverModel, newItem: DriverModel): Boolean {
-            return oldItem.driver_number == newItem.driver_number
+            return oldItem.headshot_url == oldItem.headshot_url
         }
 
         override fun areContentsTheSame(oldItem: DriverModel, newItem: DriverModel): Boolean {
