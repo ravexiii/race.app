@@ -80,10 +80,24 @@ dependencies {
     //recyclerView
     implementation("androidx.recyclerview:recyclerview:${Versions.recycler_view}")
 
+    //Retrofit
+    implementation ("com.squareup.retrofit2:retrofit:${Versions.retrofit_version}")
+    implementation ("com.squareup.retrofit2:converter-gson:${Versions.retrofit_version}")
+    implementation ("com.squareup.okhttp3:okhttp:3.6.0")
+    //okHttp
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+
+    //picasso
+    implementation("com.squareup.picasso:picasso:2.8")
+
+
+
 }
 object Versions {
     const val koin_version = "3.5.3"
     const val koin_android_version = "3.5.3"
     const val recycler_view = "1.3.1"
     const val koin_vm = "3.5.3"
+    const val retrofit_version = "2.7.2"
 }
