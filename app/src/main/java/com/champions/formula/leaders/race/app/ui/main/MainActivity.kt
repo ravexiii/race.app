@@ -8,7 +8,6 @@ import com.champions.formula.leaders.race.app.R
 import com.champions.formula.leaders.race.app.databinding.ActivityMainBinding
 import com.champions.formula.leaders.race.app.ui.base.BaseActivity
 import com.champions.formula.leaders.race.app.ui.demonstration.ViewDriversActivity
-import com.champions.formula.leaders.race.app.ui.driver.DriversActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<MainViewModel>(R.layout.activity_main, MainViewModel::class){
@@ -26,10 +25,6 @@ class MainActivity : BaseActivity<MainViewModel>(R.layout.activity_main, MainVie
         setContentView(binding.root)
         binding.mainViewTopList.setOnClickListener {
             ViewDriversActivity.start(this)
-        }
-        binding.driversTop.setOnClickListener {
-            var intent = Intent(this,DriversActivity::class.java)
-            startActivity(intent)
         }
     }
 

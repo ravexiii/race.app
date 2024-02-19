@@ -82,11 +82,12 @@ dependencies {
 
     //Retrofit
     implementation ("com.squareup.retrofit2:retrofit:${Versions.retrofit_version}")
-    implementation ("com.squareup.retrofit2:converter-gson:${Versions.retrofit_version}")
     implementation ("com.squareup.okhttp3:okhttp:3.6.0")
+
     //okHttp
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+    implementation("com.squareup.retrofit2:converter-moshi:${Versions.retrofit_version}")
 
     //picasso
     implementation("com.squareup.picasso:picasso:2.8")
@@ -97,7 +98,9 @@ dependencies {
 object Versions {
     const val koin_version = "3.5.3"
     const val koin_android_version = "3.5.3"
-    const val recycler_view = "1.3.1"
+    const val recycler_view = "1.3.2"
     const val koin_vm = "3.5.3"
     const val retrofit_version = "2.7.2"
+    const val moshi = "1.15.0"
+    const val picasso = "2.8"
 }
