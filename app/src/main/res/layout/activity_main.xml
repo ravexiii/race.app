@@ -44,20 +44,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/drivers_top"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/button_background"
-        android:fontFamily="@font/notable"
-        android:minWidth="250dp"
-        android:text="Drivers"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/main_view_top_list"
-        app:layout_constraintEnd_toEndOf="@+id/main_view_top_list"
-        app:layout_constraintStart_toStartOf="@+id/main_view_top_list" />
-
-    <Button
         android:id="@+id/exit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

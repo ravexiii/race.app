@@ -6,7 +6,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.champions.formula.leaders.race.app.R
-import com.champions.formula.leaders.race.app.domain.DriverInfo
 import com.champions.formula.leaders.race.app.databinding.ActivityViewDriversBinding
 import com.champions.formula.leaders.race.app.domain.DriverModel
 import com.champions.formula.leaders.race.app.ui.base.BaseActivity

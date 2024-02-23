@@ -5,9 +5,7 @@ import com.champions.formula.leaders.race.app.di.appModule
 import com.champions.formula.leaders.race.app.di.vmModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidFileProperties
-import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
-import org.koin.core.logger.Level
 
 
 class App : Application() {

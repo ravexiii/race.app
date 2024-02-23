@@ -4,9 +4,7 @@ package com.champions.formula.leaders.race.app.ui.demonstration
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.net.toUri
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.champions.formula.leaders.race.app.domain.DriverInfo
 import com.champions.formula.leaders.race.app.databinding.ItemDriverBinding
 import com.champions.formula.leaders.race.app.domain.DriverModel
 import com.squareup.picasso.Picasso
@@ -28,14 +26,14 @@ class DriversAdapter(private var drivers: MutableList<DriverModel>, private val 
     inner class DriverViewHolder(private val binding: ItemDriverBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(driver: DriverModel) {
             binding.apply {
-                tvTitleView.setText("${driver.name} ${driver.last_name}")
-                driverImageView.setImageURI(driver.image.toUri())
-                teamTextView.text = "Team: ${driver.team_name}"
+                tvTitleView.text = "${driver.firstName} ${driver.lastName}"
+                driverImageView.setImageURI(driver.image?.toUri())
+                teamTextView.text = "Team: ${driver.lastCurrentTeam}"
                 countryTextView.text = "Country: ${driver.country_code}"
 
 
 
-            //               podiumsTextView.text = "Podiums: ${driver.podiums}"
+            //    podiumsTextView.text = "Podiums: ${driver.podiums}"
 //                grandsTextView.text = "Grands prix entered: ${driver.grandsPrixEntered}"
 //                championshipTextView.text = "World Championships: ${driver.worldChampionships}"
 //                racesWonTextView.text = "Races Won: ${driver.racesWon}"
@@ -52,10 +50,10 @@ class DriversAdapter(private var drivers: MutableList<DriverModel>, private val 
         }
     }
 
-    fun updateDrivers(newDrivers: List<DriverModel>) {
+    fun updateDrivers(newDrivers: List<DriverModel>?) {
         drivers.clear()
-        drivers.addAll(newDrivers)
-        notifyDataSetChanged()
+        drivers.addAll(newDrivers?: listOf())
+        notifyItemRangeChanged(0, drivers.size)
     }
 }
 
